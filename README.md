@@ -164,24 +164,6 @@ corresponding daily CSV files, the current implementation was benchmarked on a
 1-year walk-forward backtest over `2024-01-01` to `2024-12-01` with monthly
 retraining, `lag=2`, and `depth=2`.
 
-### Runtime
-
-| Task | Runtime |
-| --- | ---: |
-| Full backtest with signatures recomputed each month | `274.994 s` |
-| Cached-signature backtest with `precompute_signatures()` | `122.482 s` |
-| Backtest speedup | `2.25x` |
-
-For the Ridge transfer adapter alone:
-
-| Solver Variant | Runtime |
-| --- | ---: |
-| Generic `minimize` from zero initialization | `5.9654 s` |
-| Warm-started `minimize` with analytical gradient | `0.0063 s` |
-| Adapter speedup | `948.95x` |
-
-The maximum parameter difference observed in that Ridge-transfer comparison was
-`0.0011961806`.
 
 ### 1-Year Backtest Metrics
 
@@ -189,54 +171,11 @@ Hybrid Ridge-Lasso strategy results for the 15 target stocks in the sample:
 
 | Stock | Cumulative Return | Annualized Return | Max Drawdown | Sharpe |
 | --- | ---: | ---: | ---: | ---: |
-| `0305.HK` | `3.669941` | `4.078289` | `-0.239667` | `2.612789` |
 | `9863.HK` | `3.180767` | `3.490749` | `-0.250657` | `2.343497` |
-| `000800.SZ` | `2.760536` | `3.018021` | `-0.127193` | `3.640115` |
 | `601127.SS` | `2.362377` | `2.591637` | `-0.161152` | `2.768230` |
-| `XPEV` | `2.185129` | `2.214786` | `-0.264772` | `1.917591` |
-| `LI` | `2.076708` | `2.104495` | `-0.258687` | `1.980200` |
-| `601633.SS` | `1.507207` | `1.635746` | `-0.092847` | `2.895442` |
-| `VWAGY` | `1.579047` | `1.598669` | `-0.168850` | `2.697837` |
-| `0175.HK` | `0.969113` | `1.025026` | `-0.142192` | `2.304988` |
-| `MBGAF` | `0.899117` | `0.908887` | `-0.089247` | `2.791452` |
 | `STLA` | `0.803396` | `0.811924` | `-0.095952` | `2.100313` |
-| `601238.SS` | `0.520361` | `0.555405` | `-0.111560` | `1.798600` |
 | `GM` | `0.511238` | `0.516238` | `-0.098250` | `1.947248` |
-| `NSANY` | `0.496530` | `0.501365` | `-0.062951` | `2.631550` |
-| `600104.SS` | `0.034819` | `0.036748` | `-0.142491` | `0.236421` |
 
-The full exported metrics table is saved as
-[backtest_metrics_1y_hybrid_sample.csv](backtest_metrics_1y_hybrid_sample.csv).
-
-### 2-Year Backtest on Four Selected Stocks
-
-For the four focal stocks used throughout the project
-(`601127.SS`, `9863.HK`, `GM`, `STLA`), a longer walk-forward backtest was run
-over the widest common monthly window supported by the data:
-`2023-02-01` to `2024-12-01`.
-
-Combined equity curve:
-
-![Equity Curves - Selected 4 Stocks](docs/equity_curve_selected_4stocks.png)
-
-Individual equity curves:
-
-- [601127.SS curve](docs/equity_curve_601127.SS.png)
-- [9863.HK curve](docs/equity_curve_9863.HK.png)
-- [GM curve](docs/equity_curve_GM.png)
-- [STLA curve](docs/equity_curve_STLA.png)
-
-Performance summary:
-
-| Stock | Cumulative Return | Annualized Return | Max Drawdown | Sharpe |
-| --- | ---: | ---: | ---: | ---: |
-| `9863.HK` | `13.132176` | `3.213883` | `-0.250657` | `2.525526` |
-| `STLA` | `3.501062` | `1.202878` | `-0.182688` | `2.725751` |
-| `601127.SS` | `1.921760` | `0.790165` | `-0.375596` | `1.420458` |
-| `GM` | `0.959183` | `0.423441` | `-0.163201` | `1.419519` |
-
-The full exported metrics table is saved as
-[backtest_metrics_2y_selected_4stocks.csv](backtest_metrics_2y_selected_4stocks.csv).
 
 ## Notes
 
