@@ -167,7 +167,7 @@ retraining, `lag=2`, and `depth=2`.
 
 ### 1-Year Backtest Metrics
 
-Hybrid Ridge-Lasso strategy results for the 15 target stocks in the sample:
+Hybrid Ridge-Lasso strategy results for the 4 target stocks in the sample:
 
 | Stock | Cumulative Return | Annualized Return | Max Drawdown | Sharpe |
 | --- | ---: | ---: | ---: | ---: |
