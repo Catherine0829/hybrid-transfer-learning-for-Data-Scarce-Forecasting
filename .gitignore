@@ -1,0 +1,32 @@
+# Stock data (not redistributed)
+data/*.csv
+data/*.xlsx
+!data/README.md
+!data/sample(start_dates).xlsx
+!data/download_data.py
+
+# Result files (large; regenerate by running experiments)
+*.xlsx
+*.txt
+*.png
+!docs/*.png
+!requirements.txt
+!data/sample(start_dates).xlsx
+.mplconfig/
+backtest_metrics_2y_selected_stocks.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
